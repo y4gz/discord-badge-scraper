@@ -28,7 +28,13 @@ const fetch_profile = async (user_id, guild_id) => {
       },
     });
     return res;
-  } catch {
+  } catch (err) {
+    if (err.status === 429) {
+      const wait = err.data?.retry_after || 5;
+      log.warn(`rate limited, waiting ${wait}s...`);
+      await sleep(wait * 1000);
+      return fetch_profile(user_id, guild_id);
+    }
     return null;
   }
 };
@@ -93,8 +99,11 @@ const process_guild = async (guild, channel, webhook) => {
   }
 
   const lines = [];
+  const delay = config.delay || 50;
+  const concurrency = config.concurrency || 15;
+
   const tasks = rare_members.map((member, i) => async () => {
-    await sleep(200);
+    await sleep(delay);
     const profile = await fetch_profile(member.user.id, guild.id);
     const badge_data = parse(member, profile);
     
@@ -102,12 +111,12 @@ const process_guild = async (guild, channel, webhook) => {
       lines[i] = `${member.user.username} (${member.user.id}) ${badge_data.emojis}`;
     }
 
-    if ((i + 1) % 20 === 0 || i === rare_members.length - 1) {
+    if ((i + 1) % 50 === 0 || i === rare_members.length - 1) {
       log.info(`progress: ${chalk.bold(i + 1)}/${chalk.bold(rare_members.length)} scanned`);
     }
   });
 
-  await concurrent(tasks, 5);
+  await concurrent(tasks, concurrency);
 
   const filtered = lines.filter(Boolean);
   let batch = "";
