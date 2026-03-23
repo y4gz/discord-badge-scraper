@@ -1,0 +1,21 @@
+{
+  "name": "discord-badge-scraper",
+  "version": "1.0.0",
+  "description": "discord selfbot that scans servers for users with rare badges",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/y4gz/discord-badge-scraper.git"
+  },
+  "author": "ege0x77czz",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "debug": "^4.4.3",
+    "discord.js-selfbot-v13": "^3.7.1",
+    "toml": "^3.0.0"
+  }
+}
