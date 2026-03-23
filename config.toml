@@ -1,0 +1,6 @@
+token = ""
+target_server = ""
+target_category = ""
+command_channel = ""
+prefix = "."
+owners = []
