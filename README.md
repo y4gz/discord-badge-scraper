@@ -9,19 +9,6 @@ a discord selfbot that automatically scans servers and finds users with rare bad
 - supports manual checks with `.check <server_id>`
 - allows multiple owners to use commands
 
-## rare badges it looks for
-
-| badge | flag |
-|---|---|
-| discord employee | `1 << 0` |
-| partnered server owner | `1 << 1` |
-| hypesquad events | `1 << 2` |
-| bug hunter level 1 | `1 << 3` |
-| bug hunter level 2 | `1 << 14` |
-| early supporter | `1 << 9` |
-| verified developer | `1 << 17` |
-| moderator programs alumni | `1 << 18` |
-
 ## setup
 
 1. clone the repo
