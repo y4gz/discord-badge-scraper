@@ -7,11 +7,7 @@ const badges = {
   early_supporter: { value: 512, emoji: "<:early_supporter:1426301425503436852>", rare: true },
   verified_developer: { value: 131072, emoji: "<:developer:1426301434017611927>", rare: true },
   certified_moderator: { value: 262144, emoji: "<:alumni:1426308069775642770>", rare: true },
-  nitro: { value: -1, emoji: "<:nitro:1426989748958003423>", rare: false },
-  nitro_bronze: { value: -1, emoji: "<:bronze:1426301372042707004>", rare: false },
-  nitro_silver: { value: -1, emoji: "<:silver:1426301370243485896>", rare: false },
-  nitro_gold: { value: -1, emoji: "<:gold:1426301362085302294>", rare: false },
-  nitro_platinum: { value: -1, emoji: "<:platinum:1426301366745432335>", rare: false },
+  nitro_platinum: { value: -1, emoji: "<:platinum:1426301366745432335>", rare: true },
   nitro_diamond: { value: -1, emoji: "<:diamond:1426301358805352600>", rare: true },
   nitro_emerald: { value: -1, emoji: "<:emerald:1426301360860692610>", rare: true },
   nitro_ruby: { value: -1, emoji: "<:ruby:1426301368536268870>", rare: true },
@@ -28,9 +24,6 @@ const badges = {
   one_char: { value: -1, emoji: "<:1c:1426308887270658108>", rare: false },
   two_char: { value: -1, emoji: "<:2c:1426308858942455829>", rare: false },
   three_char: { value: -1, emoji: "<:3c:1426308833780826283>", rare: false },
-  hypesquad_bravery: { value: 64, emoji: "<:bravery:1426307338574102555>", rare: true },
-  hypesquad_brilliance: { value: 128, emoji: "<:brilliance:1426307336946843653>", rare: true },
-  hypesquad_balance: { value: 256, emoji: "<:balance:1426307334430261273>", rare: true },
   quest_completed: { value: -1, emoji: "<:quest_completed:1426305108462927933>", rare: false },
   orb_profile_badge: { value: -1, emoji: "<:orbs:1426305106944720947>", rare: false },
 };
@@ -50,10 +43,6 @@ const id_map = {
   early_verified_bot_developer: badges.verified_developer,
   certified_moderator: badges.certified_moderator,
   moderator_programs_alumni: badges.certified_moderator,
-  premium: badges.nitro,
-  premium_tenure_1_month_v2: badges.nitro_bronze,
-  premium_tenure_3_month_v2: badges.nitro_silver,
-  premium_tenure_6_month_v2: badges.nitro_gold,
   premium_tenure_12_month_v2: badges.nitro_platinum,
   premium_tenure_24_month_v2: badges.nitro_diamond,
   premium_tenure_36_month_v2: badges.nitro_emerald,
@@ -68,17 +57,11 @@ const id_map = {
   guild_booster_lvl7: badges.guild_booster_lvl7,
   guild_booster_lvl8: badges.guild_booster_lvl8,
   guild_booster_lvl9: badges.guild_booster_lvl9,
-  hypesquad_bravery: badges.hypesquad_bravery,
-  hypesquad_house_1: badges.hypesquad_bravery,
-  hypesquad_brilliance: badges.hypesquad_brilliance,
-  hypesquad_house_2: badges.hypesquad_brilliance,
-  hypesquad_balance: badges.hypesquad_balance,
-  hypesquad_house_3: badges.hypesquad_balance,
   quest_completed: badges.quest_completed,
   orb_profile_badge: badges.orb_profile_badge,
 };
 
-const rare_mask = 1 | 2 | 4 | 8 | 16384 | 512 | 131072 | 262144 | 64 | 128 | 256;
+const rare_mask = 1 | 2 | 4 | 8 | 16384 | 512 | 131072 | 262144;
 
 const has_rare = (flags) => (flags & rare_mask) !== 0;
 
