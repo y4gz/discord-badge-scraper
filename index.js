@@ -108,7 +108,7 @@ const process_guild = async (guild, channel, webhook) => {
     const badge_data = parse(member, profile);
     
     if (badge_data.has_rare) {
-      lines[i] = `${member.user.username} (${member.user.id}) ${badge_data.emojis}`;
+      lines[i] = `${member.user.username} (<@${member.user.id}>) ${badge_data.emojis}`;
     }
 
     if ((i + 1) % 50 === 0 || i === rare_members.length - 1) {
